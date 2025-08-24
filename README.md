@@ -9,6 +9,8 @@ StudyStack is a student-focused platform that combines document management with 
 
 ## 🛠 Tech Stack
 
+StudyStack uses a modern, scalable architecture designed to handle the complexity of a social learning marketplace. The stack combines proven technologies for rapid development with specialized tools for AI, search, and real-time features. Each technology was chosen for its specific strengths and how well it integrates with the overall system. This architecture is future-proof and microservice-ready, allowing individual services to be extracted and scaled independently as the platform grows.
+
 - **Frontend**: Next.js 14, TypeScript, Tailwind CSS
 - **Backend API**: Ruby on Rails (API mode)
 - **Database**: PostgreSQL
@@ -18,6 +20,49 @@ StudyStack is a student-focused platform that combines document management with 
 - **AI Provider**: OpenAI/Anthropic APIs
 - **Payments**: Stripe for content monetization
 - **Streaming**: WebRTC for live study sessions
+
+## 🤔 Why This Tech Stack?
+
+### **Frontend: Next.js + TypeScript + Tailwind**
+- **Next.js**: Server-side rendering for better SEO on document discovery, built-in optimization, and seamless Vercel deployment
+- **TypeScript**: Type safety prevents bugs in complex payment/streaming integrations and improves team collaboration
+- **Tailwind**: Rapid prototyping for MVP, consistent design system, and mobile-first responsive design for students
+
+### **Backend: Ruby on Rails (API mode)**
+- **Convention over configuration**: Faster development for marketplace CRUD operations
+- **Rich ecosystem**: Mature gems for payments (Stripe), file uploads, and authentication
+- **Background jobs**: Handle AI processing, email sending, and notifications efficiently
+- **Proven at scale**: Powers platforms like GitHub and Shopify
+
+### **Database: PostgreSQL**
+- **ACID compliance**: Critical for secure payment transactions
+- **JSON support**: Store flexible document metadata and user preferences
+- **Full-text search**: Built-in search capabilities before Elasticsearch
+- **Relationships**: Handle complex data (users, documents, subscriptions, streams)
+
+### **Search: Elasticsearch**
+- **Full-text search**: Search inside PDF content, not just titles
+- **Faceted search**: Filter by subject, university, document type
+- **Real-time indexing**: Instant search as users type
+- **Analytics**: Track popular searches and trending topics
+
+### **AI/ML: Python with RAG**
+- **AI ecosystem**: Access to PyTorch, Transformers, LangChain, and OpenAI libraries
+- **PDF processing**: Specialized libraries for text extraction and processing
+- **RAG benefits**: Accurate answers grounded in actual document content with source attribution
+- **Cost effective**: More affordable than fine-tuning custom models
+
+### **Payments: Stripe**
+- **Developer experience**: Best-in-class API and comprehensive documentation
+- **Global support**: International payments for worldwide student community
+- **Advanced features**: Subscriptions, marketplace payments, and automated tax handling
+- **Security**: PCI compliance handled automatically
+
+### **Streaming: WebRTC**
+- **Low latency**: Real-time video essential for interactive study sessions
+- **Peer-to-peer**: Reduces server costs for video streaming
+- **Browser native**: No plugins required for student accessibility
+- **Adaptive quality**: Adjusts to connection speed automatically
 
 ## 📁 Project Structure
 
