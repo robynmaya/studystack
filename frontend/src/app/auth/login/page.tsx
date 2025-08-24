@@ -10,8 +10,6 @@ export default function LoginPage() {
         e.preventDefault()
         setError('')
 
-        console.log('About to fetch...', email, password)
-
         const url = 'http://localhost:3001/api/auth/login';
         try {
             const response = await fetch(url, {
