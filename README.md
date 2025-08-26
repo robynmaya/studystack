@@ -5,6 +5,8 @@ A marketplace platform for students to upload, sell, and intelligently search st
 
 ![StudyStack Hero](./assets/studystack-atf.png)
 
+🌐 **Visit us at: [https://www.studystack.app](https://www.studystack.app)**
+
 ## 🎯 Overview
 
 StudyStack is a student-focused platform that combines document management with intelligent search capabilities and social media features. Similar to Substack, students can upload their study materials, build followings, engage with their audience, and leverage AI to get intelligent answers from their document collections. It's a social marketplace where students can monetize their content while building communities around their expertise.
