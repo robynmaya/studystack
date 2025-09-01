@@ -41,11 +41,17 @@ gem 'bcrypt', '~> 3.1.7'
 # For authentication tokens
 gem 'jwt'
 
+# For payment processing
+gem 'stripe'
+
 # For frontend API calls
 gem 'rack-cors'
 
 # For file uploads
 gem 'image_processing', '~> 1.2'
+
+# For pagination
+gem 'kaminari'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
