@@ -3,7 +3,7 @@ class Api::AuthController < ApplicationController
     user = User.new(user_params)
 
     if user.save
-      token = encode_token({ user_id: user.id })
+      token = generate_jwt_token(user)
       render json: { user: user_data(user), token: token }, status: :created 
     else 
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
@@ -14,7 +14,7 @@ class Api::AuthController < ApplicationController
     user = User.find_by(email: params[:email])
 
     if user&.authenticate(params[:password])
-      token = encode_token({ user_id: user.id })
+      token = generate_jwt_token(user)
       render json: { user: user_data(user), token: token }
     else
       render json: { error: 'invalid credentials' }, status: :unauthorized
