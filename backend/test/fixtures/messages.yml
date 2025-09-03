@@ -1,0 +1,27 @@
+welcome_message:
+  conversation: creator_subscriber_conversation
+  sender: creator_user
+  content: "Welcome to my educational content! Feel free to ask any questions."
+  message_type: "text"
+  read_at: 
+
+unread_message:
+  conversation: creator_subscriber_conversation
+  sender: creator_user
+  content: "Here's your latest study material!"
+  message_type: "text"
+  read_at:
+
+subscriber_reply:
+  conversation: creator_subscriber_conversation
+  sender: subscriber_user
+  content: "Thank you for the materials! Very helpful."
+  message_type: "text"
+  read_at: <%= 1.hour.ago %>
+
+tip_message:
+  conversation: creator_subscriber_conversation
+  sender: subscriber_user
+  content: "Sent you a tip for the great content!"
+  message_type: "tip"
+  read_at: <%= 30.minutes.ago %>

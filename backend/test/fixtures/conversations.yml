@@ -1,0 +1,14 @@
+creator_subscriber_conversation:
+  creator: creator_user
+  subscriber: subscriber_user
+  is_archived: false
+
+archived_conversation:
+  creator: creator_user  
+  subscriber: another_user
+  is_archived: true
+
+creator_to_creator_conversation:
+  creator: creator_user
+  subscriber: another_creator
+  is_archived: false

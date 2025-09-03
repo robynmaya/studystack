@@ -1,13 +1,40 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  email: MyString
-  password_digest: MyString
-  first_name: MyString
-  last_name: MyString
+creator_user:
+  email: "creator@example.com"
+  password_digest: <%= BCrypt::Password.create("password123") %>
+  first_name: "John"
+  last_name: "Teacher"
+  is_creator: true
+  bio: "Mathematics professor with 10 years experience"
+  creator_since: <%= 1.year.ago %>
 
-two:
-  email: MyString
-  password_digest: MyString
-  first_name: MyString
-  last_name: MyString
+subscriber_user:
+  email: "student@example.com"
+  password_digest: <%= BCrypt::Password.create("password123") %>
+  first_name: "Jane"
+  last_name: "Student"
+  is_creator: false
+
+another_creator:
+  email: "creator2@example.com"
+  password_digest: <%= BCrypt::Password.create("password123") %>
+  first_name: "Sarah"
+  last_name: "Professor"
+  is_creator: true
+  bio: "Physics and Chemistry educator"
+  creator_since: <%= 6.months.ago %>
+
+regular_user:
+  email: "user@example.com"
+  password_digest: <%= BCrypt::Password.create("password123") %>
+  first_name: "Bob"
+  last_name: "User"
+  is_creator: false
+
+another_user:
+  email: "another@example.com"
+  password_digest: <%= BCrypt::Password.create("password123") %>
+  first_name: "Alice"
+  last_name: "Learner"
+  is_creator: false
