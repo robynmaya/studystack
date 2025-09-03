@@ -4,8 +4,9 @@ class Comment < ApplicationRecord
   belongs_to :parent_comment, class_name: 'Comment', optional: true
   has_many :replies, class_name: 'Comment', foreign_key: 'parent_comment_id', dependent: :destroy
   
-  # Virtual associations for voting (would require additional tables in real app)
-  # For now, we'll just provide methods that return 0
+  # Real associations for voting and reporting
+  has_many :comment_votes, dependent: :destroy
+  has_many :comment_reports, dependent: :destroy
   
   # Validations
   validates :content, presence: true, length: { minimum: 1, maximum: 5000 }
@@ -55,21 +56,13 @@ class Comment < ApplicationRecord
     thread_depth < max_depth
   end
   
-  # Virtual methods for voting (would be backed by actual tables in production)
+  # Real methods for voting (now backed by actual tables)
   def helpful_votes_count
-    0 # Placeholder - would query comment_votes table
+    comment_votes.helpful.count
   end
   
   def not_helpful_votes_count
-    0 # Placeholder - would query comment_votes table
-  end
-  
-  def comment_votes
-    [] # Placeholder - would return actual vote records
-  end
-  
-  def comment_reports
-    [] # Placeholder - would return actual report records
+    comment_votes.not_helpful.count
   end
   
   private

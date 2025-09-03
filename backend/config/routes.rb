@@ -68,6 +68,79 @@ Rails.application.routes.draw do
       # Nested replies
       resources :replies, controller: :comments, only: [:index, :create]
     end
+    
+    # Direct Messaging System
+    resources :conversations do
+      member do
+        patch :archive
+      end
+      
+      resources :messages do
+        member do
+          patch :mark_as_read
+        end
+        
+        collection do
+          post :mark_all_read
+        end
+      end
+    end
+    
+    # Live Streaming System
+    resources :live_streams do
+      member do
+        post :start
+        post :end
+        post :join
+        delete :leave
+      end
+      
+      collection do
+        get :live
+        get :scheduled
+      end
+      
+      resources :stream_messages, only: [:index, :create]
+    end
+    
+    # Tipping System
+    resources :tips do
+      member do
+        post :process
+      end
+      
+      collection do
+        get :sent
+        get :received
+      end
+    end
+    
+    # Notifications System
+    resources :notifications, only: [:index, :show, :update] do
+      member do
+        patch :mark_as_read
+      end
+      
+      collection do
+        patch :mark_all_as_read
+        get :unread_count
+      end
+    end
+    
+    # Social Media Feed System
+    resources :posts do
+      member do
+        post :like
+        delete :unlike
+      end
+      
+      collection do
+        get :feed
+        get :trending
+      end
+      
+      resources :comments, only: [:index, :create]
+    end
   end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

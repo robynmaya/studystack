@@ -20,9 +20,34 @@ class User < ApplicationRecord
   has_many :purchases, class_name: 'Transaction', foreign_key: 'buyer_id', dependent: :destroy
   has_many :sales, class_name: 'Transaction', foreign_key: 'seller_id', dependent: :destroy
   
-  # Comments
+  # Comment relationships
   has_many :comments, dependent: :destroy
+  has_many :comment_votes, dependent: :destroy
+  has_many :comment_reports, dependent: :destroy
   
+  # Messaging relationships
+  has_many :creator_conversations, class_name: 'Conversation', foreign_key: 'creator_id', dependent: :destroy
+  has_many :subscriber_conversations, class_name: 'Conversation', foreign_key: 'subscriber_id', dependent: :destroy
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
+  
+  # Live streaming relationships
+  has_many :live_streams, foreign_key: 'creator_id', dependent: :destroy
+  has_many :stream_viewers, dependent: :destroy
+  has_many :watched_streams, through: :stream_viewers, source: :live_stream
+  
+  # Tip relationships
+  has_many :sent_tips, class_name: 'Tip', foreign_key: 'sender_id', dependent: :destroy
+  has_many :received_tips, class_name: 'Tip', foreign_key: 'recipient_id', dependent: :destroy
+  
+  # Notification relationships
+  has_many :notifications, dependent: :destroy
+  has_many :triggered_notifications, class_name: 'Notification', foreign_key: 'actor_id', dependent: :destroy
+  
+  # Social media relationships
+  has_many :posts, dependent: :destroy
+  has_many :post_likes, dependent: :destroy
+  has_many :liked_posts, through: :post_likes, source: :post
+
   # Validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :first_name, :last_name, presence: true
